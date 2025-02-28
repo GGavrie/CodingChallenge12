@@ -15,7 +15,7 @@ const revenueCardTitle = document.createElement('h3');
 revenueCardTitle.textContent = 'Revenue'; 
 
 const revenueCardValue = document.createElement('p'); 
-revenueCardValue.textContent = '$0'; 
+revenueCardValue.textContent = ' $0'; 
 
 // Appending the title and value to the metric card
 revenueCard.appendChild(revenueCardTitle); 
@@ -36,7 +36,7 @@ const profitCardTitle = document.createElement('h3');
 profitCardTitle.textContent = 'Profit'; 
 
 const profitCardValue = document.createElement('p'); 
-profitCardValue.textContent = '$0'; 
+profitCardValue.textContent = ' $0'; 
 
 // Appending the title and value to the metric card
 profitCard.appendChild(profitCardTitle); 
@@ -57,7 +57,7 @@ const expensesCardTitle = document.createElement('h3');
 expensesCardTitle.textContent = 'Expenses'; 
 
 const expensesCardValue = document.createElement('p'); 
-expensesCardValue.textContent = '$0'; 
+expensesCardValue.textContent = ' $0'; 
 
 // Appending the title and value to the metric card
 expensesCard.appendChild(expensesCardTitle); 
@@ -115,7 +115,7 @@ if (!inventoryList) {
     document.body.appendChild(inventoryList); // Append to the body or another appropriate container
 }
 
-// Example usage: Add a button to add items
+//  Add a button to add items
 const addButton = document.createElement('button');
 addButton.textContent = 'Add Product';
 addButton.addEventListener('click', function() {
@@ -125,3 +125,38 @@ addButton.addEventListener('click', function() {
     }
 });
 document.body.appendChild(addButton);
+
+
+// Task 4 
+// Create customer section
+const customerSection = document.getElementById('customerSection');
+
+// Function to create a customer card
+function createCustomerCard(customerName) {
+    const customerCard = document.createElement('div');
+    customerCard.classList.add('customer-card');
+    customerCard.textContent = customerName;
+
+    // Add click event listener to the customer card
+    customerCard.addEventListener('click', function(event) {
+        console.log('Customer card clicked');
+        event.stopPropagation(); // Stop event bubbling
+    });
+
+    return customerCard;
+}
+
+// Add customer cards to the customer section
+const customer1 = createCustomerCard('Jason');
+customerSection.appendChild(customer1);
+
+const customer2 = createCustomerCard('Kyle');
+customerSection.appendChild(customer2);
+
+const customer3 = createCustomerCard('Gavrie');
+customerSection.appendChild(customer3);
+
+// Add click event listener to the customer section
+customerSection.addEventListener('click', function() {
+    console.log('Customer section clicked');
+});
