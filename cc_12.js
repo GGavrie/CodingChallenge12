@@ -78,3 +78,50 @@ metricCardsArray.forEach(card => {
     card.textContent = card.textContent + ' - Updated';
     card.style.backgroundColor = 'lightBlue';
 });
+
+//Task 3 
+// Function to create a new product item
+function createProductItem(productName) {
+    const listItem = document.createElement('li');
+    listItem.textContent = productName;
+    listItem.setAttribute('class', 'product-item');
+    listItem.setAttribute('data-product', productName); // Example of a custom data attribute
+    
+    // Add event listener to remove the item when clicked
+    listItem.addEventListener('click', removeProductItem);
+    
+    return listItem;
+}
+
+// Function to remove a product item
+function removeProductItem(event) {
+    const itemToRemove = event.target;
+    const inventoryList = document.getElementById('inventoryList');
+    inventoryList.removeChild(itemToRemove);
+}
+
+// Add a new product item to the inventory list
+function addProductItem(productName) {
+    const inventoryList = document.getElementById('inventoryList');
+    const newProduct = createProductItem(productName);
+    inventoryList.appendChild(newProduct);
+}
+
+// Create the inventory list element if it doesn't exist
+let inventoryList = document.getElementById('inventoryList');
+if (!inventoryList) {
+    inventoryList = document.createElement('ul');
+    inventoryList.id = 'inventoryList';
+    document.body.appendChild(inventoryList); // Append to the body or another appropriate container
+}
+
+// Example usage: Add a button to add items
+const addButton = document.createElement('button');
+addButton.textContent = 'Add Product';
+addButton.addEventListener('click', function() {
+    const productName = prompt('Enter product name:');
+    if (productName) {
+        addProductItem(productName);
+    }
+});
+document.body.appendChild(addButton);
